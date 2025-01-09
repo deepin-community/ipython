@@ -1,34 +1,34 @@
 From: Nicolas Dandrimont <olasd@debian.org>
 Date: Tue, 9 Oct 2018 15:38:25 +0200
-Subject: Update intersphinx links for local access
+Subject: update intersphinx links for local access
 
 ---
- docs/source/conf.py | 7 +++----
+ docs/source/sphinx.toml | 7 +++----
  1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/docs/source/conf.py b/docs/source/conf.py
-index 5012da2..5a5b8bb 100755
---- a/docs/source/conf.py
-+++ b/docs/source/conf.py
-@@ -59,7 +59,6 @@
-     'sphinx.ext.intersphinx',
-     'sphinx.ext.graphviz',
-     'IPython.sphinxext.ipython_console_highlighting',
--    'IPython.sphinxext.ipython_directive',
-     'sphinx.ext.napoleon',  # to preprocess docstrings
-     'github',  # for easy GitHub links
-     'magics',
-@@ -247,10 +246,10 @@ def filter(self, record):
- 
- intersphinx_mapping = {'python': ('https://docs.python.org/3/', None),
-                        'rpy2': ('https://rpy2.github.io/doc/latest/html/', None),
--                       'jupyterclient': ('https://jupyter-client.readthedocs.io/en/latest/', None),
--                       'jupyter': ('https://jupyter.readthedocs.io/en/latest/', None),
-+                       'jupyterclient': ('https://jupyter-client.readthedocs.io/en/latest/', '/usr/share/doc/python-jupyter-client-doc/html/objects.inv'),
-+                       'jupyter': ('https://jupyter.readthedocs.io/en/latest/', '/usr/share/doc/python-jupyter-core-doc/html/objects.inv'),
-                        'jedi': ('https://jedi.readthedocs.io/en/latest/', None),
--                       'traitlets': ('https://traitlets.readthedocs.io/en/latest/', None),
-+                       'traitlets': ('https://traitlets.readthedocs.io/en/latest/', '/usr/share/doc/python-traitlets-doc/html/objects.inv'),
-                        'ipykernel': ('https://ipykernel.readthedocs.io/en/latest/', None),
-                        'prompt_toolkit' : ('https://python-prompt-toolkit.readthedocs.io/en/stable/', None),
-                        'ipywidgets': ('https://ipywidgets.readthedocs.io/en/stable/', None),
+diff --git a/docs/source/sphinx.toml b/docs/source/sphinx.toml
+index d731a6f..d9adcda 100644
+--- a/docs/source/sphinx.toml
++++ b/docs/source/sphinx.toml
+@@ -18,7 +18,6 @@ extensions = [
+     "sphinx.ext.graphviz",
+     "sphinxcontrib.jquery",
+     "IPython.sphinxext.ipython_console_highlighting",
+-    "IPython.sphinxext.ipython_directive",
+     "sphinx.ext.napoleon",  # to preprocess docstrings
+     "github",  # for easy GitHub links
+     "magics",
+@@ -30,10 +29,10 @@ modindex_common_prefix = ["IPython."]
+ [intersphinx_mapping]
+ python = { url = 'https://docs.python.org/3/', fallback = '' }
+ rpy2 = { url = 'https://rpy2.github.io/doc/latest/html/', fallback = '' }
+-jupyterclient = { url = 'https://jupyter-client.readthedocs.io/en/latest/', fallback = '' }
+-jupyter = { url = 'https://jupyter.readthedocs.io/en/latest/', fallback = '' }
++jupyterclient = { url = 'https://jupyter-client.readthedocs.io/en/latest/', fallback = '/usr/share/doc/python-jupyter-client-doc/html/objects.inv' }
++jupyter = { url = 'https://jupyter.readthedocs.io/en/latest/', fallback = '/usr/share/doc/python-jupyter-core-doc/html/objects.inv' }
+ jedi = { url = 'https://jedi.readthedocs.io/en/latest/', fallback = '' }
+-traitlets = { url = 'https://traitlets.readthedocs.io/en/latest/', fallback = '' }
++traitlets = { url = 'https://traitlets.readthedocs.io/en/latest/', fallback = '/usr/share/doc/python-traitlets-doc/html/objects.inv' }
+ ipykernel = { url = 'https://ipykernel.readthedocs.io/en/latest/', fallback = '' }
+ prompt_toolkit = { url = 'https://python-prompt-toolkit.readthedocs.io/en/stable/', fallback = '' }
+ ipywidgets = { url = 'https://ipywidgets.readthedocs.io/en/stable/', fallback = '' }

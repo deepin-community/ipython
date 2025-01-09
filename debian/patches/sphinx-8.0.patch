@@ -1,0 +1,27 @@
+From: =?utf-8?b?VG9tw6HFoSBIcm7EjWlhcg==?= <thrnciar@redhat.com>
+Date: Mon, 18 Nov 2024 16:54:19 +0100
+Subject: Fix compatibility with the latest Sphinx 8
+
+Resolves: https://github.com/ipython/ipython/issues/14595
+
+Origin: upstream, https://github.com/ipython/ipython/pull/14596
+Bug: https://github.com/ipython/ipython/issues/14595
+Bug-Debian: https://bugs.debian.org/1090234
+Last-Update: 2024-12-19
+---
+ docs/source/conf.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/source/conf.py b/docs/source/conf.py
+index d5892ca..b5a053d 100755
+--- a/docs/source/conf.py
++++ b/docs/source/conf.py
+@@ -118,7 +118,7 @@
+     intersphinx_mapping = config["intersphinx_mapping"]
+     for k, v in intersphinx_mapping.items():
+         intersphinx_mapping[k] = tuple(
+-            [intersphinx_mapping[k]["url"], intersphinx_mapping[k]["fallback"]]
++            [intersphinx_mapping[k]["url"], intersphinx_mapping[k]["fallback"] or None]
+         )
+ 
+ 

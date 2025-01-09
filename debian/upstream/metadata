@@ -3,3 +3,4 @@ Bug-Database: https://github.com/ipython/ipython/issues
 Bug-Submit: https://github.com/ipython/ipython/issues/new
 Repository: https://github.com/ipython/ipython.git
 Repository-Browse: https://github.com/ipython/ipython
+Security-Contact: https://github.com/ipython/ipython/tree/HEAD/SECURITY.md

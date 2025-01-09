@@ -63,8 +63,9 @@ def inputhook(context):
         timer = QtCore.QTimer()
         timer.timeout.connect(event_loop.quit)
         while not context.input_is_ready():
+            # NOTE: run the event loop, and after 50 ms, call `quit` to exit it.
             timer.start(50)  # 50 ms
-            event_loop.exec_()
+            _exec(event_loop)
             timer.stop()
     else:
         # On POSIX platforms, we can use a file descriptor to quit the event
@@ -74,6 +75,8 @@ def inputhook(context):
         )
         try:
             # connect the callback we care about before we turn it on
+            # lambda is necessary as PyQT inspect the function signature to know
+            # what arguments to pass to. See https://github.com/ipython/ipython/pull/12355
             notifier.activated.connect(lambda: event_loop.exit())
             notifier.setEnabled(True)
             # only start the event loop we are not already flipped
@@ -81,3 +84,7 @@ def inputhook(context):
                 _exec(event_loop)
         finally:
             notifier.setEnabled(False)
+
+    # This makes sure that the event loop is garbage collected.
+    # See issue 14240.
+    event_loop.setParent(None)

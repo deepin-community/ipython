@@ -1,3 +1,149 @@
+ipython (8.30.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Port to Sphinx 8.0 (closes: #1090234).
+
+ -- Colin Watson <cjwatson@debian.org>  Thu, 19 Dec 2024 01:53:10 +0000
+
+ipython (8.30.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+  * Fix pdb issues in Python 3.13.1 (closes: #1088322).
+
+ -- Colin Watson <cjwatson@debian.org>  Mon, 09 Dec 2024 01:11:42 +0000
+
+ipython (8.29.0-1) unstable; urgency=medium
+
+  [ Julian Gilbey ]
+  * fix nodocs -> nodoc
+
+  [ Gordon Ball ]
+  * New upstream version 8.29.0 (Closes: #1063945)
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 11 Nov 2024 23:03:15 +0100
+
+ipython (8.20.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release.
+    - Adds support for Python 3.12. (Closes: #1056414)
+  * Refresh patches.
+  * Drop the broken embedding patch, superseded upstream.
+  * Clean correctly. (Closes: #1049281)
+  * Copy the manpage instead of moving it. (Closes: #1049598)
+  * Depend on python3-pandas, python3-pickleshare, and python3-trio in
+    autotpkgtest for extra coverage.
+  * Run the autopkgtest against the installed package.
+  * Skip test_pretty_environ as it is broken.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 14 Jan 2024 20:32:19 -0400
+
+ipython (8.14.0-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ L. Guruprasad ]
+  * Add upstream patch to fix broken embedding when using
+    IPython.terminal.embed.InteractiveShellEmbed. (Closes: #1053223)
+
+ -- Colin Watson <cjwatson@debian.org>  Thu, 05 Oct 2023 00:12:56 +0100
+
+ipython (8.14.0-1) unstable; urgency=medium
+
+  * New upstream version 8.14.0
+  * Rebase patches; drop patches which apply to versions of jedi and
+    stack-data below the version in stable.
+  * Build-depend on python3-typing-extensions (for docs only)
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 22 Jul 2023 19:20:13 +0000
+
+ipython (8.5.0-4) unstable; urgency=medium
+
+  * Team upload.
+  * Add upstream patch for pygments > 2.14 (Closes: #1028617)
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Fri, 20 Jan 2023 08:19:58 +0100
+
+ipython (8.5.0-3) unstable; urgency=medium
+
+  * Team upload.
+  * Add workaround for stack_data in testing
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Sat, 17 Dec 2022 15:16:53 +0100
+
+ipython (8.5.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Add upstream patch for new python-stack-data
+
+ -- Jochen Sprickerhof <jspricke@debian.org>  Sat, 17 Dec 2022 07:52:47 +0100
+
+ipython (8.5.0-1) unstable; urgency=medium
+
+  * New upstream version 8.5.0
+  * patches: drop backport from 8.4.0-2, applied upstream
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 01 Oct 2022 18:26:44 +0000
+
+ipython (8.4.0-2) unstable; urgency=medium
+
+  * d/control: inject dependency on python3-setuptools
+  * patches: backport ipython#d858213,7a49386 to fix test_pprint_heap_allocated_type
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 17 Sep 2022 21:08:27 +0000
+
+ipython (8.4.0-1) experimental; urgency=medium
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Security-Contact.
+
+  [ Gordon Ball ]
+  * New upstream version 8.4.0
+
+ -- Gordon Ball <gordon@chronitis.net>  Sat, 27 Aug 2022 22:27:11 +0000
+
+ipython (8.1.0-1) experimental; urgency=medium
+
+  * New upstream version 8.1.0
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 14 Mar 2022 19:35:09 +0000
+
+ipython (8.0.1-1) experimental; urgency=medium
+
+  * New upstream version 8.0.1
+  * Rebase patches, drop setuptools patch
+  * Build using pybuild-plugin-pyproject instead of setuptools directly
+  * Update dependencies: +black, +stack-data, +pytest-asyncio, -nose
+  * Install manpages explicitly rather than via setuptools data_files
+  * Skip tests known to fail with jedi 0.18.0
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 28 Jan 2022 11:40:45 +0000
+
+ipython (7.31.1-1) unstable; urgency=medium
+
+  * New upstream version 7.31.1
+  * Fixes CVE-2022-21699 (execution of config files from the current
+    directory, which might allow cross-user attacks if ipython is run from a
+    directory multiple users can write). Closes: #1004122
+
+ -- Gordon Ball <gordon@chronitis.net>  Mon, 24 Jan 2022 20:22:25 +0000
+
+ipython (7.31.0-1) unstable; urgency=medium
+
+  [ Julien Puydt ]
+  * New upstream version 7.29.0.
+  * Remove Built-Using from the arch:all -doc package.
+  * Rework patches.
+  * Add some -doc packages as b-dep with nodoc tag.
+  * Drop 0007-forgotten-sys.patch (useless?).
+
+  [ Gordon Ball ]
+  * Run pytest against all supported python versions
+  * New upstream version 7.31.0
+
+ -- Gordon Ball <gordon@chronitis.net>  Fri, 07 Jan 2022 15:09:47 +0000
+
 ipython (7.27.0-1) unstable; urgency=medium
 
   [ Gordon Ball ]
