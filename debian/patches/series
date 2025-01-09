@@ -1,3 +1,4 @@
-0001-use-setuptools-also-for-the-install-target-so-the-py.patch
 0002-Update-intersphinx-links-for-local-access.patch
-0007-forgotten-sys.patch
+0003-Drop-setuptools-data_files.patch
+python-3.13.1-pdb.patch
+sphinx-8.0.patch

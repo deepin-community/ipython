@@ -7,12 +7,13 @@ Standards-Version: 4.6.0
 Homepage: https://github.com/ipython/ipython
 Build-Depends: debhelper-compat (= 13),
                dh-python,
+               pybuild-plugin-pyproject,
+               black,
                python3-all,
                python3-backcall,
                python3-decorator,
                python3-jedi (>= 0.16),
                python3-matplotlib-inline,
-               python3-nose,
                python3-numpydoc,
                python3-pexpect,
                python3-pickleshare,
@@ -20,7 +21,12 @@ Build-Depends: debhelper-compat (= 13),
                python3-setuptools,
                python3-sphinx <!nodoc>,
                python3-sphinx-rtd-theme <!nodoc>,
+               python3-stack-data,
                python3-traitlets,
+               python3-typing-extensions <!nodoc>,
+               python-traitlets-doc <!nodoc>,
+               python-jupyter-client-doc <!nodoc>,
+               python-jupyter-core-doc <!nodoc>
 Vcs-Git: https://salsa.debian.org/python-team/packages/ipython.git
 Vcs-Browser: https://salsa.debian.org/python-team/packages/ipython
 Rules-Requires-Root: no
@@ -30,7 +36,6 @@ Package: python-ipython-doc
 Architecture: all
 Section: doc
 Depends: ${misc:Depends}, ${sphinxdoc:Depends}
-Built-Using: ${sphinxdoc:Built-Using}
 Description: Enhanced interactive Python shell (documentation)
  IPython can be used as a replacement for the standard Python shell,
  or it can be used as a complete working environment for scientific
@@ -49,6 +54,7 @@ Depends:
  ${misc:Depends},
  ${python3:Depends},
  python3-pexpect,
+ python3-setuptools,
 Suggests: python-ipython-doc
 Description: Enhanced interactive Python shell (Python 3 version)
  IPython can be used as a replacement for the standard Python shell,

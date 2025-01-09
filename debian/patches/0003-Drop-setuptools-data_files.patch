@@ -1,0 +1,24 @@
+From: Gordon Ball <gordon@chronitis.net>
+Date: Wed, 19 Jan 2022 12:14:07 +0000
+Subject: Drop setuptools data_files
+
+This is used to install the man page, but since the install goes via an
+intermediate wheel package, it doesn't get installed in the right place
+in any case, so it's easier to install explicitly.
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index f9f4f3a..aad5b1b 100644
+--- a/setup.py
++++ b/setup.py
+@@ -119,7 +119,7 @@
+ 
+ data_files = find_data_files()
+ 
+-setup_args['data_files'] = data_files
++# setup_args['data_files'] = data_files
+ 
+ #---------------------------------------------------------------------------
+ # custom distutils commands

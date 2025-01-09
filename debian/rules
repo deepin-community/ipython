@@ -9,16 +9,17 @@ export LC_ALL=C.UTF-8
 %:
 	dh $@ --with python3,sphinxdoc --buildsystem=pybuild
 
-override_dh_auto_install:
-	dh_auto_install
-	rm -f debian/tmp/usr/bin/iptest* debian/tmp/usr/bin/ipython
-	mv debian/tmp/usr/share/man/man1/ipython.1 debian/tmp/usr/share/man/man1/ipython3.1
+execute_after_dh_auto_install:
+	rm debian/tmp/usr/bin/ipython
+
+execute_before_dh_installman:
+	cp docs/man/ipython.1 docs/man/ipython3.1
 
 override_dh_auto_test:
 	@echo "No test to avoid circular dependencies"
 
 override_dh_sphinxdoc:
-ifeq (,$(findstring nodocs, $(DEB_BUILD_OPTIONS)))
+ifeq (,$(findstring nodoc, $(DEB_BUILD_OPTIONS)))
 	http_proxy=127.0.0.1:9 https_proxy=127.0.0.1:9 PYTHONPATH=. python3 -m sphinx -b html docs/source debian/python-ipython-doc/usr/share/doc/python-ipython-doc/html
 	dh_sphinxdoc -O--buildsystem=pybuild
 endif

@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+# test_pretty_environ failure tracked in:
+# https://github.com/ipython/ipython/issues/14292
+
+cd $AUTOPKGTEST_TMP
+export HOME=$AUTOPKGTEST_TMP
+for py in $(py3versions -s); do
+    $py -m pytest /usr/lib/python3/dist-packages/IPython \
+        -k 'not test_pretty_environ'
+done

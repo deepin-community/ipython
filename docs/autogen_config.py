@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 
-from os.path import join, dirname, abspath
 import inspect
-
+from pathlib import Path
 from IPython.terminal.ipapp import TerminalIPythonApp
 from ipykernel.kernelapp import IPKernelApp
 from traitlets import Undefined
 from collections import defaultdict
 
-here = abspath(dirname(__file__))
-options = join(here, 'source', 'config', 'options')
-generated = join(options, 'config-generated.txt')
+here = (Path(__file__)).parent
+options = here / "source" / "config" / "options"
+generated = options / "config-generated.txt"
 
 import textwrap
 indent = lambda text,n: textwrap.indent(text,n*' ')
@@ -102,11 +101,12 @@ def reverse_aliases(app):
 
 def write_doc(name, title, app, preamble=None):
     trait_aliases = reverse_aliases(app)
-    filename = join(options, name+'.rst')
-    with open(filename, 'w') as f:
-        f.write(title + '\n')
-        f.write(('=' * len(title)) + '\n')
-        f.write('\n')
+    filename = options / (name + ".rst")
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(".. _" + name + "_options:" + "\n\n")
+        f.write(title + "\n")
+        f.write(("=" * len(title)) + "\n")
+        f.write("\n")
         if preamble is not None:
             f.write(preamble + '\n\n')
         #f.write(app.document_config_options())
@@ -118,8 +118,7 @@ def write_doc(name, title, app, preamble=None):
 
 if __name__ == '__main__':
     # Touch this file for the make target
-    with open(generated, 'w'):
-        pass
+    Path(generated).write_text("", encoding="utf-8")
 
     write_doc('terminal', 'Terminal IPython options', TerminalIPythonApp())
     write_doc('kernel', 'IPython kernel options', IPKernelApp(),

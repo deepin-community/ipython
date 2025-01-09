@@ -2,7 +2,17 @@ Tests: ipyshell
 Depends: ipython3
 Restrictions: allow-stderr
 
-Test-Command: python3 -m pytest
-Depends: @, git, python3-pytest, python3-nose, python3-testpath,
-         python3-matplotlib, python3-nbformat, python3-ipykernel
+Tests: pytest
+Depends: git,
+         python3-all,
+         python3-ipykernel,
+         python3-matplotlib,
+         python3-nbformat,
+         python3-pandas,
+         python3-pickleshare,
+         python3-pytest,
+         python3-pytest-asyncio,
+         python3-testpath,
+         python3-trio,
+         @
 Restrictions: allow-stderr
